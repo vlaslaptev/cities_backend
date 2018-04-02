@@ -1,14 +1,30 @@
 package cities.entity;
 
-public class City {
-    private final String name;
-    private final String description;
-    private final GeoCoordinates coordinates;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-    public City(String name, String description, GeoCoordinates coordinates) {
+@Entity
+public class City {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
+    private String name;
+    private String description;
+    private double latitude;
+    private double longitude;
+
+    public City(String name, String description, double latitude, double longitude) {
         this.name = name;
         this.description = description;
-        this.coordinates = coordinates;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getName() {
@@ -19,7 +35,11 @@ public class City {
         return description;
     }
 
-    public GeoCoordinates getCoordinates() {
-        return coordinates;
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 }
