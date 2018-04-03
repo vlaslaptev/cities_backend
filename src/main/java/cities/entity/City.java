@@ -1,9 +1,6 @@
 package cities.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class City {
@@ -12,6 +9,7 @@ public class City {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private String name;
+    private Country country;
     private String description;
     private double latitude;
     private double longitude;
@@ -29,6 +27,12 @@ public class City {
 
     public String getName() {
         return name;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    public Country getCountry() {
+        return country;
     }
 
     public String getDescription() {
