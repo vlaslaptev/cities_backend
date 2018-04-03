@@ -3,6 +3,7 @@ package cities.controller;
 import cities.Dto.CheckCityRequest;
 import cities.Dto.CheckCityResponse;
 import cities.Dto.CheckCityResponseWithCity;
+import cities.Dto.CityDto;
 import cities.entity.City;
 import cities.repositories.CityRepository;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,9 @@ public class Controller {
         if (cityFindResult.isEmpty()) {
             response = new CheckCityResponse(false, request.getCityName());
         } else {
-            response = new CheckCityResponseWithCity(true, cityFindResult.get(0));
+            City city = cityFindResult.get(0);
+            response = new CheckCityResponseWithCity(true, new CityDto(city.getName(), city.getCountry().getName(),
+                    city.getDescription(), city.getLatitude(), city.getLongitude()));
         }
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

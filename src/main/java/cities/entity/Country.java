@@ -12,14 +12,14 @@ public class Country {
     private long id;
     private String name;
     private String description;
+
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     private Set<City> cites;
 
-    public Country() {
-    }
-
-    public Country(String name, String description) {
+    public Country(String name, String description, Set<City> cites) {
         this.name = name;
         this.description = description;
+        this.cites = cites;
     }
 
     public long getId() {
@@ -34,7 +34,6 @@ public class Country {
         return description;
     }
 
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
     public Set<City> getCites() {
         return cites;
     }

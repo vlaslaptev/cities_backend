@@ -1,16 +1,14 @@
 package cities.Dto;
 
-import cities.entity.City;
-
 public class CheckCityResponseWithCity extends CheckCityResponse {
-    private final City city;
+    private final CityDto city;
 
-    public CheckCityResponseWithCity(boolean found, City city) {
+    public CheckCityResponseWithCity(boolean found, CityDto city) {
         super(found, city.getName());
         this.city = city;
     }
 
-    public City getCity() {
+    public CityDto getCity() {
         return city;
     }
 }

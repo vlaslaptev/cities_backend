@@ -9,13 +9,17 @@ public class City {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "country_id")
     private Country country;
     private String description;
     private double latitude;
     private double longitude;
 
-    public City(String name, String description, double latitude, double longitude) {
+    public City(String name, Country country, String description, double latitude, double longitude) {
         this.name = name;
+        this.country = country;
         this.description = description;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -29,8 +33,6 @@ public class City {
         return name;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
     public Country getCountry() {
         return country;
     }
