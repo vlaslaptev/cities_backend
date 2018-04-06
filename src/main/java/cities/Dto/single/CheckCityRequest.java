@@ -1,4 +1,4 @@
-package cities.Dto;
+package cities.Dto.single;
 
 public class CheckCityRequest {
     private final String cityName;

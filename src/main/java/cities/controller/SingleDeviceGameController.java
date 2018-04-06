@@ -1,6 +1,6 @@
 package cities.controller;
 
-import cities.Dto.CheckCityRequest;
+import cities.Dto.single.CheckCityRequest;
 import cities.Dto.CheckCityResponse;
 import cities.Dto.CheckCityResponseWithCity;
 import cities.Dto.CityDto;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cities/v1")
-public class Controller {
+@RequestMapping("/cities/v1/single")
+public class SingleDeviceGameController {
 
     private CityRepository cityRepository;
 
-    public Controller(CityRepository cityRepository) {
+    public SingleDeviceGameController(CityRepository cityRepository) {
         this.cityRepository = cityRepository;
     }
 
